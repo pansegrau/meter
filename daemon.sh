@@ -19,8 +19,8 @@ while true; do
   json=$(rtlamr -msgtype=r900 -filterid=$METERID -single=true -format=json)
   echo "Meter info: $json"
 
-  consumption=$(echo $json | python -c 'import json,sys;obj=json.load(sys.stdin);print float(obj["Message"]["Consumption"])/10000')
-  echo "Current consumption: $consumption CCF"
+  consumption=$(echo $json | python -c 'import json,sys;obj=json.load(sys.stdin);print float(obj["Message"]["Consumption"])/1000')
+  echo "Current Total Consumption: $consumption Cubic Meters"
 
   # Replace with your custom logging code
   if [ ! -z "$STATX_APIKEY" ]; then
